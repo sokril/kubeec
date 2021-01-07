@@ -1,0 +1,7 @@
+apiVersion: inspursoft.kubeec.kubeec.com/v1
+kind: ECService
+metadata:
+  name: ecservice-sample
+spec:
+  # Add fields here
+  foo: bar

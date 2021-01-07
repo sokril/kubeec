@@ -1,0 +1,24 @@
+# permissions for end users to edit ecservices.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ecservice-editor-role
+rules:
+- apiGroups:
+  - inspursoft.kubeec.kubeec.com
+  resources:
+  - ecservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - inspursoft.kubeec.kubeec.com
+  resources:
+  - ecservices/status
+  verbs:
+  - get
