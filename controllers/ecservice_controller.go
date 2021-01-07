@@ -24,7 +24,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	inspursoftkubeecv1 "kubeec/api/v1"
+	kubeecv1 "kubeec/api/v1"
 )
 
 // ECServiceReconciler reconciles a ECService object
@@ -34,8 +34,8 @@ type ECServiceReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=inspursoft.kubeec.kubeec.com,resources=ecservices,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=inspursoft.kubeec.kubeec.com,resources=ecservices/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=kubeec.inspursoft.com,resources=ecservices,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=kubeec.inspursoft.com,resources=ecservices/status,verbs=get;update;patch
 
 func (r *ECServiceReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	_ = context.Background()
@@ -48,6 +48,6 @@ func (r *ECServiceReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 
 func (r *ECServiceReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&inspursoftkubeecv1.ECService{}).
+		For(&kubeecv1.ECService{}).
 		Complete(r)
 }

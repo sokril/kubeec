@@ -5,7 +5,7 @@ metadata:
   name: ecservice-viewer-role
 rules:
 - apiGroups:
-  - inspursoft.kubeec.kubeec.com
+  - kubeec.inspursoft.com
   resources:
   - ecservices
   verbs:
@@ -13,7 +13,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - inspursoft.kubeec.kubeec.com
+  - kubeec.inspursoft.com
   resources:
   - ecservices/status
   verbs:

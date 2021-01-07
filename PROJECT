@@ -1,7 +1,7 @@
-domain: kubeec.com
+domain: inspursoft.com
 repo: kubeec
 resources:
-- group: inspursoft.kubeec
+- group: kubeec
   kind: ECService
   version: v1
 version: "2"

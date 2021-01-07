@@ -26,7 +26,7 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	inspursoftkubeecv1 "kubeec/api/v1"
+	kubeecv1 "kubeec/api/v1"
 	"kubeec/controllers"
 	// +kubebuilder:scaffold:imports
 )
@@ -39,7 +39,7 @@ var (
 func init() {
 	_ = clientgoscheme.AddToScheme(scheme)
 
-	_ = inspursoftkubeecv1.AddToScheme(scheme)
+	_ = kubeecv1.AddToScheme(scheme)
 	// +kubebuilder:scaffold:scheme
 }
 
@@ -59,7 +59,7 @@ func main() {
 		MetricsBindAddress: metricsAddr,
 		Port:               9443,
 		LeaderElection:     enableLeaderElection,
-		LeaderElectionID:   "c544f95c.kubeec.com",
+		LeaderElectionID:   "c544f95c.inspursoft.com",
 	})
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")
