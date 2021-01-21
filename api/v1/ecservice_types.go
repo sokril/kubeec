@@ -25,20 +25,34 @@ import (
 
 // ECServiceSpec defines the desired state of ECService
 type ECServiceSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of ECService. Edit ECService_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// DeploymentName is the name of the Deployment resource that the
+	// controller should create.
+	// This field must be specified.
+	// +kubebuilder:validation:MaxLength=64
+	DeploymentName string `json:"deploymentName"`
+
+	// Replicas is the number of replicas that should be specified on the
+	// Deployment resource that the controller creates.
+	// If not specified, one replica will be created.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	Replicas *int32 `json:"replicas,omitempty"`
 }
 
 // ECServiceStatus defines the observed state of ECService
 type ECServiceStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	// ReadyReplicas is the number of 'ready' replicas observed on the
+	// Deployment resource created for this ECService resource.
+	// +optional
+	// +kubebuilder:validation:Minimum=0
+	ReadyReplicas int32 `json:"readyReplicas,omitempty"`
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:subresource:status
 
 // ECService is the Schema for the ecservices API
 type ECService struct {

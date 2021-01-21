@@ -67,9 +67,10 @@ func main() {
 	}
 
 	if err = (&controllers.ECServiceReconciler{
-		Client: mgr.GetClient(),
-		Log:    ctrl.Log.WithName("controllers").WithName("ECService"),
-		Scheme: mgr.GetScheme(),
+		Client:   mgr.GetClient(),
+		Log:      ctrl.Log.WithName("controllers").WithName("ECService"),
+		Scheme:   mgr.GetScheme(),
+		Recorder: mgr.GetEventRecorderFor("ecService-controller"),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "ECService")
 		os.Exit(1)
